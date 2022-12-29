@@ -34,10 +34,10 @@ const createUserModel = (sequelize, DataTypes) => {
       type: DataTypes.STRING(255),
     },
     emailChecked: {
-      type: DataTypes.TINYINT(1),
+      type: DataTypes.TINYINT,
     },
     cashforceAdm: {
-      type: DataTypes.TINYINT(1),
+      type: DataTypes.TINYINT,
     },
   }, {
     tableName: 'users',
@@ -45,7 +45,13 @@ const createUserModel = (sequelize, DataTypes) => {
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   })
+
+  User.associate = (models) => {
+    User.hasMany(models.Order, { foreignKey: 'userId', as: 'userId' });
+  };
+
   return User;
 };
 
 export default createUserModel;
+
