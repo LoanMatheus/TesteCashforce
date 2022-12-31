@@ -92,17 +92,11 @@ const createSponsorsModel = (sequelize, DataTypes) => {
     },
   }, {
     tableName: 'sponsors',
-    underscored: true,
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   })
 
-  Sponsor.associate = (models) => {
-    Sponsor.belongsTo(models.Cnpj, { foreignKey: 'cnpjId', as: 'cnpjId' });
-    Sponsor.hasMany(models.Offer, { foreignKey: 'sponsorId', as: 'sponsorId' });
-  };
-
   return Sponsor;
 };
 
-export default createSponsorsModel;
+module.exports = createSponsorsModel;

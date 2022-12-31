@@ -37,16 +37,11 @@ const createOrderPortionModel = (sequelize, DataTypes) => {
     },
   }, {
     tableName: 'orderportions',
-    underscored: true,
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   })
 
-  Order.associate = (models) => {
-    Order.belongsTo(models.Order, { foreignKey: 'orderId', as: 'orderId' });
-  };
-
   return OrderPortion;
 };
 
-export default createOrderPortionModel;
+module.exports = createOrderPortionModel;

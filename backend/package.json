@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test:integration": "mocha --require ts-node/register src/tests/integration/*.test.ts",
-    "dev": "tsnd src/server.ts",
-    "start": "node ."
+    "dev": "nodemon ./api/server.js",
+    "start": "node ./api/server.js"
   },
   "keywords": [],
   "author": "",

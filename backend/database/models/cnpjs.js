@@ -6,7 +6,7 @@
  * @returns 
 */
 const createCnpjModel = (sequelize, DataTypes) => {
-  const Cnpj = sequelize.define('Cnpjs', {
+  const Cnpj = sequelize.define('cnpjs', {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -21,19 +21,10 @@ const createCnpjModel = (sequelize, DataTypes) => {
     },
   }, {
     tableName: 'cnpjs',
-    underscored: true,
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   })
-
-  Cnpj.associate = (models) => {
-    Cnpj.hasMany(models.Order, { foreignKey: 'cnpjId', as: 'cnpjId' });
-    Cnpj.hasMany(models.Provider, { foreignKey: 'cnpjId', as: 'cnpjId' });
-    Cnpj.hasMany(models.Sponsor, { foreignKey: 'cnpjId', as: 'cnpjId' });
-    Cnpj.hasMany(models.Buyer, { foreignKey: 'cnpjId', as: 'cnpjId' });
-  };
-
   return Cnpj;
 };
 
-export default createCnpjModel;
+module.exports = createCnpjModel;

@@ -95,17 +95,11 @@ const createProviderModel = (sequelize, DataTypes) => {
     },
   }, {
     tableName: 'providers',
-    underscored: true,
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   })
 
-  Provider.associate = (models) => {
-    Provider.belongsTo(models.Cnpj, { foreignKey: 'cnpjId', as: 'cnpjId' });
-    Provider.hasMany(models.Order, { foreignKey: 'providerId', as: 'providerId' });
-  };
-
   return Provider;
 };
 
-export default createProviderModel;
+module.exports = createProviderModel;

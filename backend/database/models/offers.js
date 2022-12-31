@@ -61,17 +61,10 @@ const createOfferModel = (sequelize, DataTypes) => {
     },
   }, {
     tableName: 'offers',
-    underscored: true,
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   })
-
-  Order.associate = (models) => {
-    Order.belongsTo(models.Order, { foreignKey: 'orderId', as: 'orderId' });
-    Order.belongsTo(models.Sponsor, { foreignKey: 'sponsorId', as: 'sponsorId' });
-  };
-
   return Offer;
 };
 
-export default createOfferModel;
+module.exports = createOfferModel;

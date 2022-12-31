@@ -94,20 +94,23 @@ const createOrderModel = (sequelize, DataTypes) => {
     },
   }, {
     tableName: 'orders',
-    underscored: true,
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   })
 
   Order.associate = (models) => {
-    Order.belongsTo(models.Cnpj, { foreignKey: 'cnpjId', as: 'cnpjId' });
-    Order.belongsTo(models.User, { foreignKey: 'userId', as: 'userId' });
-    Order.belongsTo(models.Buyer, { foreignKey: 'buyerId', as: 'buyerId' });
-    Order.belongsTo(models.Provider, { foreignKey: 'providerId', as: 'providerId' });
-    Order.hasMany(models.OrderPortion, { foreignKey: 'orderId', as: 'orderId' });
+    models.orders.belongsTo(models.cnpjs, { foreignKey: 'cnpjId', as: 'cnpj' });
+    models.orders.belongsTo(models.users, { foreignKey: 'userId', as: 'user' });
+    models.orders.belongsTo(models.buyers, { foreignKey: 'buyerId', as: 'buyer' });
+    models.orders.belongsTo(models.providers, { foreignKey: 'providerId', as: 'provider' });
+
+    models.cnpjs.hasMany(models.orders, { foreignKey: 'id' });
+    models.users.hasMany(models.orders, { foreignKey: 'id' });
+    models.buyers.hasMany(models.orders, { foreignKey: 'id' });
+    models.providers.hasMany(models.orders, { foreignKey: 'id' });
   };
 
   return Order;
 };
 
-export default createOrderModel;
+module.exports = createOrderModel;

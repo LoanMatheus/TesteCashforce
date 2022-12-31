@@ -6,7 +6,7 @@
  * @returns 
 */
 const createUserModel = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+  const User = sequelize.define('users', {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -41,17 +41,11 @@ const createUserModel = (sequelize, DataTypes) => {
     },
   }, {
     tableName: 'users',
-    underscored: true,
     charset: 'utf8',
     collate: 'utf8_unicode_ci',
   })
-
-  User.associate = (models) => {
-    User.hasMany(models.Order, { foreignKey: 'userId', as: 'userId' });
-  };
-
   return User;
 };
 
-export default createUserModel;
+module.exports = createUserModel;
 

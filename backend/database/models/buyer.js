@@ -83,19 +83,14 @@ const createBuyerModel = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING(255),
     },
-  }, {
-    tableName: 'buyers',
-    underscored: true,
-    charset: 'utf8',
-    collate: 'utf8_unicode_ci',
-  })
-
-  Buyer.associate = (models) => {
-    Buyer.belongsTo(models.Cnpj, { foreignKey: 'cnpjId', as: 'cnpjId' });
-    Buyer.hasMany(models.Order, { foreignKey: 'buyerId', as: 'buyerId' });
-  };
+  },
+    {
+      tableName: 'buyers',
+      charset: 'utf8',
+      collate: 'utf8_unicode_ci',
+    })
 
   return Buyer;
 };
 
-export default createBuyerModel;
+module.exports = createBuyerModel;
