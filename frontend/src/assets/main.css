@@ -1,6 +1,6 @@
 @import './base.css';
+@import './nf.css';
 
-#app {}
 
 a,
 .green {
@@ -9,12 +9,6 @@ a,
   transition: 0.4s;
 }
 
-@media (hover: hover) {
-  a:hover {}
-}
+@media (hover: hover) {}
 
-@media (min-width: 1024px) {
-  body {}
-
-  #app {}
-}
+@media (min-width: 1024px) {}

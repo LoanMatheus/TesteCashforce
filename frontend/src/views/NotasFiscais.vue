@@ -4,23 +4,20 @@ import statusBuyer from "../utils/status";
 </script>
 
 <template>
-  <div class="sider-financiador">
-    <div id="menu" class="menu">
-      <img
-        src="../assets/Logo.svg"
-        alt="logo cashforce"
-        class="logoCashForce"
-      />
-      <div class="sideMenuNf">
-        <img src="../assets/Vector.svg" alt="" />
-        Notas fiscais
+  <div class="page-default">
+    <div id="menu" class="sider-financiador">
+      <img src="../assets/Logo.svg" alt="logo cashforce" class="logo" />
+      <div class="menu-item">
+        <div class="border-menu"></div>
+        <img src="../assets/Vector.svg" alt="" class="vector" />
+        <p class="menu-text">Notas fiscais</p>
       </div>
     </div>
-    <div id="page" class="page">
-      <hr />
+    <div id="page" class="conteudo">
+      <div class="header-sistema"></div>
       <div class="pageContent">
-        <p class="title">
-          <img src="../assets/Vector.svg" alt="" />
+        <p class="page-title">
+          <img src="../assets/VectorBlue.svg" alt="" class="title-vector" />
           Notas fiscais
         </p>
         <p class="subtitle">Visualize as notas fiscais que você tem.</p>
@@ -44,7 +41,7 @@ import statusBuyer from "../utils/status";
                 <td>{{ nf.buyer.name }}</td>
                 <td>{{ nf.provider.name }}</td>
                 <td>{{ nf.emissionDate.split("T")[0] }}</td>
-                <td>
+                <td class="green">
                   {{
                     Number(nf.value).toLocaleString("pt-br", {
                       style: "currency",
@@ -52,7 +49,7 @@ import statusBuyer from "../utils/status";
                     })
                   }}
                 </td>
-                <td>
+                <td class="green">
                   {{
                     status[
                       nf.orderStatusBuyer === null ? 0 : nf.orderStatusBuyer
@@ -87,18 +84,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.sider-financiador {
-  display: flex;
-  height: 900px;
-  width: 288px;
-}
-.logoCashForce {
-  max-width: 100%;
-}
-.menu {
-  display: flex;
-  flex-direction: column;
-}
-</style>
