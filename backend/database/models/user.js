@@ -47,5 +47,14 @@ const createUserModel = (sequelize, DataTypes) => {
   return User;
 };
 
+let x = 'aa'
+const a = () => console.log(x)
+x = 'bb'
+
+const b = () => {
+  let x = 'cc'
+  a()
+}
+
 module.exports = createUserModel;
 

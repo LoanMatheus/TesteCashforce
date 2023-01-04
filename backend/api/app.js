@@ -1,5 +1,6 @@
 const express = require('express');
 const routes = require('./routes/orderRoutes');
+const cors = require('./middlewares/cors');
 const errorMiddleware = require('./middlewares/errorMiddleware')
 
 class App {
@@ -14,6 +15,7 @@ class App {
 
   config() {
     this.app.use(express.json())
+    this.app.use(cors);
   };
 
   routes() {
